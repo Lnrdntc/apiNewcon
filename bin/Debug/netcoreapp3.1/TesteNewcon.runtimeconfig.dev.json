@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\leleo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\leleo\\.nuget\\packages"
+    ]
+  }
+}
