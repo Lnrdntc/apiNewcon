@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TesteNewcon.Models.Entrada;
 using TesteNewcon.Models.Saida;
 using TesteNewcon.Services;
@@ -20,7 +21,7 @@ namespace TesteNewcon.Controllers
         [HttpPost]
         [Route("cadastrar-ponto-turistico")]
 
-        public SaidaPontoTuristico CriarPontoTuristico(EntradaPontoTuristico entrada)
+        public SaidaPontoTuristico CriarPontoTuristico([FromBody] EntradaCadastrarPontoTuristico entrada)
         {
             var retorno = _pontoTuristicoServices.CriarPontoTuristico(entrada);
 
@@ -37,17 +38,29 @@ namespace TesteNewcon.Controllers
         {
             var retorno = _pontoTuristicoServices.AtualizarPontoTuristico(entrada);
 
-            return (SaidaAtualizarPontoTuristico)retorno;
+            return retorno;
         }
 
-        //deletar ponto turistico
+        ///<sumary>
+        //Deletar ponto turistico
+        ///</sumary>
         [HttpDelete]
-        [Route("Deletar-Ponto-Turistico")]
+        [Route("deletar-ponto-turistico")]
 
         public SaidaAtualizarPontoTuristico DeletarPontoTuristico(string id)
         {
             return _pontoTuristicoServices.DeletarPontoTuristico(id);
         }
 
+        ///<sumary>
+        //Listar pontos turisticos
+        ///</sumary>
+        [HttpGet]
+        [Route("listar-pontos-turisticos")]
+
+        public List<SaidaListaPontosTuristicos> ListarPontosTuristicos(string buscar)
+        {
+            return _pontoTuristicoServices.ListarPontosTuristicos(buscar);
+        }
     }
 }

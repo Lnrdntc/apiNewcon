@@ -30,3 +30,6 @@ C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\runtimes\win-x64
 C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\fronttest\package-lock.json
+C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\fronttest\package.json
+C:\Users\leleo\source\repos\TesteNewcon\bin\Debug\netcoreapp3.1\fronttest\public\manifest.json

@@ -2,11 +2,8 @@
 
 namespace TesteNewcon.Models.Entrada
 {
-    public class EntradaPontoTuristico
+    public class EntradaCadastrarPontoTuristico
     {
-
-        [Required]
-        public int Id { get; set; }
 
         [Required]
         public string Nome { get; set; }

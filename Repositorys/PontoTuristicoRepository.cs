@@ -1,8 +1,10 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using TesteNewcon.Models.Entrada;
 using TesteNewcon.Models.Saida;
 
@@ -11,17 +13,13 @@ namespace TesteNewcon.Repositorys
     public class PontoTuristicoRepository
     {
         private readonly IConfiguration _configuration;
-        private object _pontoTuristicoRepository;
-        public object UPDATE { get; private set; }
-
-
 
         public PontoTuristicoRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public SaidaPontoTuristico CriarPontoTuristico(EntradaPontoTuristico entrada)
+        public SaidaPontoTuristico CriarPontoTuristico(EntradaCadastrarPontoTuristico entrada)
         {
             SaidaPontoTuristico retorno = new SaidaPontoTuristico();
 
@@ -74,20 +72,17 @@ namespace TesteNewcon.Repositorys
 
                 return retorno;
             }
-
-            return retorno;
         }
 
 
         public SaidaAtualizarPontoTuristico AtualizarPontoTuristico(EntradaPontoTuristico entrada)
         {
             SaidaAtualizarPontoTuristico retorno = new SaidaAtualizarPontoTuristico();
+            
             try
             {
-
                 using (var con = new SqlConnection(_configuration.GetSection("Conexao").Value))
                 {
-
 
                     DynamicParameters _parametros = new DynamicParameters();
 
@@ -98,17 +93,14 @@ namespace TesteNewcon.Repositorys
 
                     con.Open();
                     var sql = @"UPDATE PontoTuristico
-                                    SET  Nome =    @Nome, 
-                                           Local = @Local,
-                                    Descricao = @Descricao
-                                                   
-                                    WHERE idPontoTuristico = @id";
+                                SET  Nome      = @Nome, 
+                                     Local     = @Local,
+                                     Descricao = @Descricao
+                                WHERE idPontoTuristico = @id";
 
                     con.Execute(sql, new { id = entrada.Id, Nome = entrada.Nome, Local = entrada.Local, Descricao = entrada.Descricao });
-                              
-
-                    
-                                    retorno.Mensagem = "Ponto Turistico " + entrada.Nome + " alterado com sucesso!";
+                   
+                    retorno.Mensagem = "Ponto Turistico " + entrada.Nome + " alterado com sucesso!";
 
                     return retorno;
                 }
@@ -122,20 +114,81 @@ namespace TesteNewcon.Repositorys
 
                 return retorno;
             }
-
-            return retorno;
         }
 
-        public SaidaAtualizarPontoTuristico deletar (string Id)
+        public SaidaAtualizarPontoTuristico DeletarPontoTuristico(string Id)
         {
-            string sql = "DELETE FROM PontoTuristico WHERE idPontoTuristico = @id";
+            string sql = @"DELETE FROM PontoTuristico
+                           WHERE idPontoTuristico = @id";
+
             using (var con = new SqlConnection(_configuration.GetSection("Conexao").Value))
             {
-                var affectedRows = con.Execute(sql, new { id = Id });
-                Console.WriteLine(affectedRows);
+                con.Execute(sql, new { id = Id });
 
                 SaidaAtualizarPontoTuristico retorno = new SaidaAtualizarPontoTuristico();
                 retorno.Mensagem = "Ponto turistico apagado com sucesso";
+                return retorno;
+            }
+        }
+
+        public List<SaidaListaPontosTuristicos> ListarPontosTuristicos(string buscar)
+        {
+            List<SaidaListaPontosTuristicos> retorno = new List<SaidaListaPontosTuristicos>();
+
+            try
+            {
+                using (var con = new SqlConnection(_configuration.GetSection("Conexao").Value))
+                {
+                    DynamicParameters _parametros = new DynamicParameters();
+
+                    var concat = '%' + buscar + '%';
+
+                    _parametros.Add("@busca", concat);
+
+                    con.Open();
+
+                    var sql = "";
+
+                    if (buscar == null || buscar == "")
+                    {
+                        sql = @"SELECT * 
+                                FROM PontoTuristico";
+
+                    }
+                    else
+                    {
+                        sql = @"SELECT * 
+                                FROM PontoTuristico
+                                WHERE PontoTuristico.Nome      like @busca
+                                   OR PontoTuristico.Local     like @busca
+                                   OR PontoTuristico.Descricao like @busca";
+                    }
+
+                        var listaPontovenda = con.Query<SaidaListaPontosTuristicos>(sql: sql,
+                                                                                    param: _parametros,
+                                                                                    commandType: CommandType.Text);
+
+                    listaPontovenda.ToList();
+
+                    foreach (var _listaPontovenda in listaPontovenda)
+                    {
+                        retorno.Add(new SaidaListaPontosTuristicos()
+                        {
+                            idPontoTuristico = _listaPontovenda.idPontoTuristico,
+                            Nome             = _listaPontovenda.Nome,
+                            Local            = _listaPontovenda.Local,
+                            Descricao        = _listaPontovenda.Descricao
+
+                    });
+
+                    }                 
+
+                    return retorno;
+                }
+
+            }
+            catch
+            {
                 return retorno;
             }
         }
