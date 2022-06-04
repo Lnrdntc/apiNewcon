@@ -17,11 +17,17 @@ export const ButtonComponent = styled.button`
 
   ${(props) => props.size === "deletar" && 
   css`
+    background-color: #fff
     width: 5rem;
-    background: ${(props) => props.theme.palette.secondary};
+    background: ${(props) => props.theme.palette.warning};
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 16px;
 
     :hover {
       cursor: pointer;
+      background-color: #dc3545;
+      color: #fff;
     }
   `}
 
@@ -32,10 +38,19 @@ export const ButtonComponent = styled.button`
 
   ${(props) => props.size === "editar" && 
   css`
+    background-color: #fff
     width: 5rem;
-    color: white;
-    background: blue;
+    background: ${(props) => props.theme.palette.warning};
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    :hover {
+      cursor: pointer;
+      background-color: #205;
+      color: #fff;
+    }
+    `}
 
-  `}
+  
   
 `
