@@ -75,7 +75,12 @@ https://stackoverflow.com/questions/55770103/delete-post-to-mysql-using-react-js
 https://mui.com/pt/material-ui/customization/palette/
 https://pt-br.reactjs.org/docs/forms.html
 https://www.youtube.com/watch?v=C7uo6lyfNa8&ab_channel=CFBCursos
-
+https://reactjs.org/docs/hooks-state.html
+https://www.youtube.com/watch?v=5Tq4-UgPTDs&t=202s&ab_channel=ViniciusDacal
+https://www.kindacode.com/article/how-to-fetch-data-with-axios-and-hooks-in-react/
+https://reactjs.org/docs/lists-and-keys.html#keys
+https://stackoverflow.com/questions/55647287/how-to-send-request-on-click-react-hooks-way
+https://www.freecodecamp.org/news/how-to-use-axios-with-react/
 
 Trago também uma playlist completa de onde eu me baseei para concluir o projeto:
 
