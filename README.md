@@ -64,7 +64,7 @@ Após isso o projeto irá rodar em seu navegador.
 
 Para a ligação do backend com o frontend foi utilizado o Axios.
 
-Todo o conteudo foi feito atravez de video aulas explicativas sobre como consumir uma api, começar um CRUD, entre outras e também realizando consultas em N documentações.
+Todo o conteudo foi feito através de video aulas explicativas sobre como consumir uma api, começar um CRUD, entre outras e também realizando consultas em N documentações.
 
 Citarei algumas para referencia:
 
