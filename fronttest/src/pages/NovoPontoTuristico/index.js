@@ -9,6 +9,9 @@ import axios from "axios";
 
 document.body.style.backgroundColor = "black";
 
+//  botão para voltar para a tela inicial
+
+
 
 // Deletar os pontos turisticos
 
@@ -26,10 +29,17 @@ axios.delete('https://localhost:44384/deletar-ponto-turistico?id='+idPontoTurist
 });
 };
 
+
+
 // Cadastrar novo ponto
 
 const NovoPontoTuristico = () => {
-  
+  const navigate = useNavigate();
+
+  const voltar = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   const [data, setData] = useState([]);
 
   const handleClick = useCallback(() => {
@@ -144,6 +154,13 @@ const NovoPontoTuristico = () => {
             ))}
           </tbody>
           </table>
+
+          <Button
+          text="Voltar"
+          size="cadastrar"
+          onClick={voltar}
+        />
+
     </div>;
 
 

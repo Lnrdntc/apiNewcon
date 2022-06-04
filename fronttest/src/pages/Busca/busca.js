@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "../../components/Button";
 import axios from "axios";
-
-
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
+
+    const navigate = useNavigate();
+  
+    const voltar = useCallback(() => {
+      navigate("/");
+    }, [navigate]);
+
   const [busca, setBusca] = useState([]); //declarei use state para mudar o estado na pagina dinamicamente
 
   const fetchData = async () => {
@@ -64,6 +70,12 @@ const App = () => {
           ))}
         </tbody>
       </table>
+
+      <Button
+        text="Voltar"
+        size="cadastrar"
+        onClick={voltar}/>
+
     </div>
   );
 };

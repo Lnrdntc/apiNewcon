@@ -67,6 +67,7 @@ const PaginaInicial = () => {
         text="Tela de busca"
         size="cadastrar"
         onClick={leo}/>
+
       
       </div>
     </div>
