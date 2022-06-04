@@ -9,9 +9,6 @@ import axios from "axios";
 
 document.body.style.backgroundColor = "black";
 
-//  botão para voltar para a tela inicial
-
-
 
 // Deletar os pontos turisticos
 
@@ -35,6 +32,8 @@ axios.delete('https://localhost:44384/deletar-ponto-turistico?id='+idPontoTurist
 
 const NovoPontoTuristico = () => {
   const navigate = useNavigate();
+
+//  botão para voltar para a tela inicial
 
   const voltar = useCallback(() => {
     navigate("/");
@@ -61,7 +60,7 @@ const NovoPontoTuristico = () => {
       })
       .finally(function () {
          window.location.reload();
-        // atualizar a pagina
+        // pra atualizar a pagina
       });
     
   });
@@ -78,7 +77,7 @@ const NovoPontoTuristico = () => {
     fetch();
   }, []);
   
-  return <div
+  return  <div
 
     style={{
           display: "flex",
@@ -88,45 +87,28 @@ const NovoPontoTuristico = () => {
           }}>
 
     <h1>Cadastrar Ponto Turistico</h1>
-      <div  className="form-group"  >
+   
+      <div  className="form-group" >
       <label>Nome:</label>
       <br/>
-      <input type="text" className="form-control" id="Nome" />
+      <input placeholder="Campo obrigatório!" type="text" className="form-control" id="Nome"  />
       <br/>
       <label>Local:</label>
       <br/>
-      <input type="text" className="form-control" id="Local"/>
+      <input placeholder="Campo obrigatório!" type="text" className="form-control" id="Local"  />
       <br/>
       <label >Descrição</label>
       <br/>
-      <input type="text" className="form-control" id="Descricao"/>
+      <input placeholder="Campo obrigatório!" type="text" className="form-control" id="Descricao" maxlength="100" />
       <br/>
       <Button
           text="Cadastrar Ponto Turistico"
           size="cadastrar"
+          type="submit"
           onClick={handleClick}
         />
       </div>
-
 <br/>
-
-      <div>
-
-
-{/* fazendo o input de busca */}
-
-        
-<h1>Faça a sua busca aqui:</h1>
-
-<form>
-<label>
-<input type="text" name="name"placeholder="Insira o que procura aqui!" />
-
-</label>
-<input type="submit" value="Pesquisar" />
-</form>
-
-</div>
 
       <br/>
 
@@ -163,9 +145,6 @@ const NovoPontoTuristico = () => {
 
     </div>;
 
-
-
 };
-
 
 export default NovoPontoTuristico;

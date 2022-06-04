@@ -26,6 +26,7 @@ const App = () => {
         nome: item.nome,
         local: item.local,
         descricao: item.descricao,
+        key:index,
       };
     });
 

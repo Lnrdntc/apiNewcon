@@ -15,12 +15,13 @@ const PaginaInicial = () => {
   
     const navigate = useNavigate();
   
-// const hadleclick é a variavel com uma funcao dentro dela que ao clicar ela redireciona a pagina
+// const hadleclick é a variavel com uma funcao dentro dela que ao clicar ela redireciona a pagina (pag busca)
 
     const leo = useCallback(() => {
       navigate("/busca");
     }, [navigate]);
   
+// vai para a pagina de cadastro
 
   const handleClick = useCallback(() => {
     navigate("/novo-ponto-turistico");
