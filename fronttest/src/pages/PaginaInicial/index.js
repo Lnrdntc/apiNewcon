@@ -4,22 +4,23 @@ import Button from "../../components/Button";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 
-document.body.style.backgroundColor = "black";
+document.body.style.backgroundColor = "white";
 
 
 // começar a fazer o botão para navegar para a pagina de cadastro ***pag 2 do teste
 
 const PaginaInicial = () => {
 
-  const BuscaPag = () => {
+  
   
     const navigate = useNavigate();
   
-    const handleClick = useCallback(() => {
+// const hadleclick é a variavel com uma funcao dentro dela que ao clicar ela redireciona a pagina
+
+    const leo = useCallback(() => {
       navigate("/busca");
-    }, [navigate]);}
+    }, [navigate]);
   
-  const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
     navigate("/novo-ponto-turistico");
@@ -62,11 +63,10 @@ const PaginaInicial = () => {
           onClick={handleClick}
         />
 
-  <Button
-  text="Tela de busca"
-  size="cadastrar"
-  onClick={handleClick}
-/>
+        <Button
+        text="Tela de busca"
+        size="cadastrar"
+        onClick={leo}/>
       
       </div>
     </div>
